@@ -1,0 +1,1007 @@
+{
+  "openapi": "3.0.1",
+  "info": { "title": "vctr", "version": "v1" },
+  "paths": {
+    "/api/ApiKey": {
+      "post": {
+        "tags": ["ApiKey"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiKeyCreatedViewModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiKeyCreatedViewModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiKeyCreatedViewModel"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": ["ApiKey"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": { "$ref": "#/components/schemas/ApiKeyViewModel" }
+              },
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ApiKeyViewModel" }
+              },
+              "text/json": {
+                "schema": { "$ref": "#/components/schemas/ApiKeyViewModel" }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["ApiKey"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": { "$ref": "#/components/schemas/ApiKeyViewModel" }
+              },
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ApiKeyViewModel" }
+              },
+              "text/json": {
+                "schema": { "$ref": "#/components/schemas/ApiKeyViewModel" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Auth/Login": {
+      "post": {
+        "tags": ["Auth"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/LoginModel" }
+            },
+            "text/json": {
+              "schema": { "$ref": "#/components/schemas/LoginModel" }
+            },
+            "application/*+json": {
+              "schema": { "$ref": "#/components/schemas/LoginModel" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": { "$ref": "#/components/schemas/UserViewModel" }
+              },
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/UserViewModel" }
+              },
+              "text/json": {
+                "schema": { "$ref": "#/components/schemas/UserViewModel" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Auth/Logout": {
+      "post": {
+        "tags": ["Auth"],
+        "responses": { "200": { "description": "Success" } }
+      }
+    },
+    "/api/Links": {
+      "get": {
+        "tags": ["Links"],
+        "parameters": [
+          {
+            "name": "offset",
+            "in": "query",
+            "schema": { "type": "integer", "format": "int32", "default": 0 }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": { "type": "integer", "format": "int32", "default": 100 }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/LinkViewModel" }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/LinkViewModel" }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/LinkViewModel" }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Links"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/LinkCreateModel" }
+            },
+            "text/json": {
+              "schema": { "$ref": "#/components/schemas/LinkCreateModel" }
+            },
+            "application/*+json": {
+              "schema": { "$ref": "#/components/schemas/LinkCreateModel" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": { "$ref": "#/components/schemas/LinkViewModel" }
+              },
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/LinkViewModel" }
+              },
+              "text/json": {
+                "schema": { "$ref": "#/components/schemas/LinkViewModel" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Links/search": {
+      "get": {
+        "tags": ["Links"],
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "schema": { "type": "string", "nullable": true }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "schema": { "type": "integer", "format": "int32", "default": 0 }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": { "type": "integer", "format": "int32", "default": 100 }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/LinkViewModel" }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/LinkViewModel" }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/LinkViewModel" }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Links/{id}": {
+      "get": {
+        "tags": ["Links"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": { "$ref": "#/components/schemas/LinkViewModel" }
+              },
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/LinkViewModel" }
+              },
+              "text/json": {
+                "schema": { "$ref": "#/components/schemas/LinkViewModel" }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Links"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid" }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/LinkUpdateModel" }
+            },
+            "text/json": {
+              "schema": { "$ref": "#/components/schemas/LinkUpdateModel" }
+            },
+            "application/*+json": {
+              "schema": { "$ref": "#/components/schemas/LinkUpdateModel" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": { "$ref": "#/components/schemas/LinkViewModel" }
+              },
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/LinkViewModel" }
+              },
+              "text/json": {
+                "schema": { "$ref": "#/components/schemas/LinkViewModel" }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Links"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid" }
+          }
+        ],
+        "responses": { "200": { "description": "Success" } }
+      }
+    },
+    "/": {
+      "get": {
+        "tags": ["Redirection"],
+        "responses": { "200": { "description": "Success" } }
+      }
+    },
+    "/{ident}": {
+      "get": {
+        "tags": ["Redirection"],
+        "parameters": [
+          {
+            "name": "ident",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "nullable": true }
+          },
+          {
+            "name": "password",
+            "in": "query",
+            "schema": { "type": "string", "nullable": true }
+          }
+        ],
+        "responses": { "200": { "description": "Success" } }
+      }
+    },
+    "/api/Users": {
+      "get": {
+        "tags": ["Users"],
+        "parameters": [
+          {
+            "name": "offset",
+            "in": "query",
+            "schema": { "type": "integer", "format": "int32", "default": 0 }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": { "type": "integer", "format": "int32", "default": 100 }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/UserViewModel" }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/UserViewModel" }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/UserViewModel" }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Users"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/UserCreateModel" }
+            },
+            "text/json": {
+              "schema": { "$ref": "#/components/schemas/UserCreateModel" }
+            },
+            "application/*+json": {
+              "schema": { "$ref": "#/components/schemas/UserCreateModel" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/UserViewModel" }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/UserViewModel" }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/UserViewModel" }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Users/me": {
+      "get": {
+        "tags": ["Users"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": { "$ref": "#/components/schemas/UserViewModel" }
+              },
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/UserViewModel" }
+              },
+              "text/json": {
+                "schema": { "$ref": "#/components/schemas/UserViewModel" }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Users"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/UpdateSelfUserModel" }
+            },
+            "text/json": {
+              "schema": { "$ref": "#/components/schemas/UpdateSelfUserModel" }
+            },
+            "application/*+json": {
+              "schema": { "$ref": "#/components/schemas/UpdateSelfUserModel" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": { "$ref": "#/components/schemas/UserViewModel" }
+              },
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/UserViewModel" }
+              },
+              "text/json": {
+                "schema": { "$ref": "#/components/schemas/UserViewModel" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Users/search": {
+      "get": {
+        "tags": ["Users"],
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "schema": { "type": "string", "nullable": true }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "schema": { "type": "integer", "format": "int32", "default": 0 }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": { "type": "integer", "format": "int32", "default": 100 }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/UserViewModel" }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/UserViewModel" }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/UserViewModel" }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Users/{id}": {
+      "get": {
+        "tags": ["Users"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": { "$ref": "#/components/schemas/UserViewModel" }
+              },
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/UserViewModel" }
+              },
+              "text/json": {
+                "schema": { "$ref": "#/components/schemas/UserViewModel" }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Users"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid" }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/UserUpdateModel" }
+            },
+            "text/json": {
+              "schema": { "$ref": "#/components/schemas/UserUpdateModel" }
+            },
+            "application/*+json": {
+              "schema": { "$ref": "#/components/schemas/UserUpdateModel" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": { "$ref": "#/components/schemas/UserViewModel" }
+              },
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/UserViewModel" }
+              },
+              "text/json": {
+                "schema": { "$ref": "#/components/schemas/UserViewModel" }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Users"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid" }
+          }
+        ],
+        "responses": { "200": { "description": "Success" } }
+      }
+    },
+    "/api/Users/me/links": {
+      "get": {
+        "tags": ["Users"],
+        "parameters": [
+          {
+            "name": "offset",
+            "in": "query",
+            "schema": { "type": "integer", "format": "int32", "default": 0 }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": { "type": "integer", "format": "int32", "default": 100 }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/LinkViewModel" }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/LinkViewModel" }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/LinkViewModel" }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Users/{id}/links": {
+      "get": {
+        "tags": ["Users"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid" }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "schema": { "type": "integer", "format": "int32", "default": 0 }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": { "type": "integer", "format": "int32", "default": 100 }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/LinkViewModel" }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/LinkViewModel" }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/LinkViewModel" }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Users/me/links/count": {
+      "get": {
+        "tags": ["Users"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": { "$ref": "#/components/schemas/CountResponseModel" }
+              },
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/CountResponseModel" }
+              },
+              "text/json": {
+                "schema": { "$ref": "#/components/schemas/CountResponseModel" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Users/{id}/links/count": {
+      "get": {
+        "tags": ["Users"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": { "$ref": "#/components/schemas/CountResponseModel" }
+              },
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/CountResponseModel" }
+              },
+              "text/json": {
+                "schema": { "$ref": "#/components/schemas/CountResponseModel" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Users/me/links/search": {
+      "get": {
+        "tags": ["Users"],
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "schema": { "type": "string", "nullable": true }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "schema": { "type": "integer", "format": "int32", "default": 0 }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": { "type": "integer", "format": "int32", "default": 100 }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/LinkViewModel" }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/LinkViewModel" }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/LinkViewModel" }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Users/{id}/links/search": {
+      "get": {
+        "tags": ["Users"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid" }
+          },
+          {
+            "name": "query",
+            "in": "query",
+            "schema": { "type": "string", "nullable": true }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "schema": { "type": "integer", "format": "int32", "default": 0 }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": { "type": "integer", "format": "int32", "default": 100 }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/LinkViewModel" }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/LinkViewModel" }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/LinkViewModel" }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ApiKeyCreatedViewModel": {
+        "type": "object",
+        "properties": {
+          "guid": { "type": "string", "format": "uuid" },
+          "created": { "type": "string", "format": "date-time" },
+          "last_access": { "type": "string", "format": "date-time" },
+          "access_count": { "type": "integer", "format": "int32" },
+          "key": { "type": "string", "nullable": true }
+        },
+        "additionalProperties": false
+      },
+      "ApiKeyViewModel": {
+        "type": "object",
+        "properties": {
+          "guid": { "type": "string", "format": "uuid" },
+          "created": { "type": "string", "format": "date-time" },
+          "last_access": { "type": "string", "format": "date-time" },
+          "access_count": { "type": "integer", "format": "int32" }
+        },
+        "additionalProperties": false
+      },
+      "LoginModel": {
+        "required": ["ident", "password"],
+        "type": "object",
+        "properties": {
+          "ident": { "type": "string" },
+          "password": { "type": "string" },
+          "remember": { "type": "boolean" }
+        },
+        "additionalProperties": false
+      },
+      "Permissions": {
+        "enum": [2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2147483647, -1],
+        "type": "integer",
+        "format": "int32"
+      },
+      "UserViewModel": {
+        "type": "object",
+        "properties": {
+          "guid": { "type": "string", "format": "uuid" },
+          "created": { "type": "string", "format": "date-time" },
+          "username": { "type": "string", "nullable": true },
+          "permissions": { "$ref": "#/components/schemas/Permissions" },
+          "last_login": { "type": "string", "format": "date-time" }
+        },
+        "additionalProperties": false
+      },
+      "LinkViewModel": {
+        "type": "object",
+        "properties": {
+          "guid": { "type": "string", "format": "uuid" },
+          "created": { "type": "string", "format": "date-time" },
+          "ident": { "type": "string", "nullable": true },
+          "destination": { "type": "string", "nullable": true },
+          "creator": { "$ref": "#/components/schemas/UserViewModel" },
+          "enabled": { "type": "boolean" },
+          "permanent_redirect": { "type": "boolean" },
+          "password_required": { "type": "boolean" },
+          "last_access": { "type": "string", "format": "date-time" },
+          "access_count": { "type": "integer", "format": "int32" },
+          "unique_access_count": { "type": "integer", "format": "int32" },
+          "total_access_limit": { "type": "integer", "format": "int32" },
+          "expires": { "type": "string", "format": "date-time" }
+        },
+        "additionalProperties": false
+      },
+      "LinkCreateModel": {
+        "required": ["destination"],
+        "type": "object",
+        "properties": {
+          "ident": {
+            "maxLength": 256,
+            "minLength": 2,
+            "type": "string",
+            "nullable": true
+          },
+          "destination": {
+            "maxLength": 10240,
+            "minLength": 0,
+            "type": "string"
+          },
+          "enabled": { "type": "boolean" },
+          "permanent_redirect": { "type": "boolean" },
+          "password": { "type": "string", "nullable": true },
+          "total_access_limit": { "type": "integer", "format": "int32" },
+          "expires": { "type": "string", "format": "date-time" }
+        },
+        "additionalProperties": false
+      },
+      "LinkUpdateModel": {
+        "type": "object",
+        "properties": {
+          "ident": {
+            "maxLength": 256,
+            "minLength": 2,
+            "type": "string",
+            "nullable": true
+          },
+          "enabled": { "type": "boolean" },
+          "permanent_redirect": { "type": "boolean" },
+          "password": { "type": "string", "nullable": true },
+          "total_access_limit": { "type": "integer", "format": "int32" },
+          "expires": { "type": "string", "format": "date-time" },
+          "destination": {
+            "maxLength": 10240,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UserCreateModel": {
+        "required": ["password", "username"],
+        "type": "object",
+        "properties": {
+          "username": {
+            "maxLength": 128,
+            "minLength": 4,
+            "pattern": "[a-zA-Z0-9_\\-]+",
+            "type": "string"
+          },
+          "password": { "maxLength": 1024, "minLength": 6, "type": "string" },
+          "permissions": { "$ref": "#/components/schemas/Permissions" }
+        },
+        "additionalProperties": false
+      },
+      "UpdateSelfUserModel": {
+        "type": "object",
+        "properties": {
+          "username": { "type": "string", "nullable": true },
+          "current_password": { "type": "string", "nullable": true },
+          "new_password": { "type": "string", "nullable": true }
+        },
+        "additionalProperties": false
+      },
+      "UserUpdateModel": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "maxLength": 128,
+            "minLength": 4,
+            "pattern": "[a-zA-Z0-9_\\-]+",
+            "type": "string",
+            "nullable": true
+          },
+          "password": {
+            "maxLength": 1024,
+            "minLength": 6,
+            "type": "string",
+            "nullable": true
+          },
+          "permissions": { "$ref": "#/components/schemas/Permissions" }
+        },
+        "additionalProperties": false
+      },
+      "CountResponseModel": {
+        "type": "object",
+        "properties": { "count": { "type": "integer", "format": "int32" } },
+        "additionalProperties": false
+      }
+    }
+  }
+}

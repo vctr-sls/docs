@@ -1,0 +1,13 @@
+{
+  "Version": "13.7.0",
+  "Name": "vctr",
+  "DestinationType": "URLShortener",
+  "RequestMethod": "POST",
+  "RequestURL": "https://yourInstance/api/links",
+  "Headers": {
+    "Authorization": "your token"
+  },
+  "Body": "JSON",
+  "Data": "{\"destination\":\"$input$\",\"enabled\":true,\"permanent_redirect\":true}",
+  "URL": "https://yourInstance/$json:ident$"
+}
